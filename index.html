@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Relaxer</h1>
+  
+  <section id="main">
+    <div class="circle" onclick="playCircle();">
+      <div class="info">숨쉬기</div>
+    </div>
+  </section>
+
+  <script>
+    let animCircle;
+    const circle = document.querySelector('.circle');
+
+    function playCircle() {
+      clearInterval(animCircle);
+      let duration = 1000 / 30;
+      let counter = 0;
+
+      // circle.classList.remove('in');
+      circle.classList.add('in');
+      circle.innerHTML = '들이마시기';
+
+      animCircle = setInterval(function(){
+        if(counter >= 120){
+          counter = 0;
+          circle.classList.toggle('in');
+          if(circle.classList.contains('in')) {
+            circle.innerHTML = '들이마시기';
+          } else {
+            circle.innerHTML = '내쉬기';
+          }     
+        }
+
+        counter++;
+        console.log(counter)
+      }, duration)
+    }
+
+  </script>
+</body>
+</html>
